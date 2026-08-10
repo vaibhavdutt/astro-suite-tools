@@ -31,8 +31,9 @@ import {
   PixelWidthChecker,
   RobotsSitemapGenerator,
 } from "@/components/serpkit/text-tools";
+import { UrlSchemaGenerator } from "@/components/serpkit/url-schema";
 
-const TITLE = "SERPKit — 12 Client-Side SEO & Image Tools";
+const TITLE = "SERPKit — 13 SEO & Image Tools";
 const DESCRIPTION =
   "Convert images to WebP, minify SVG, build JSON-LD schema, check meta pixel widths and generate robots.txt — all processed in your browser.";
 
@@ -49,6 +50,7 @@ export const Route = createFileRoute("/")({
 });
 
 const VIEWS: Record<ToolId, () => ReactElement> = {
+  "url-schema": UrlSchemaGenerator,
   webp: WebpConverter,
   "svg-min": SvgMinifier,
   "social-resize": SocialResizer,
@@ -218,7 +220,7 @@ function SerpKit() {
           <section className="hero-wash border-b border-border">
             <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-                <Sparkles className="size-3.5 text-primary" /> 12 tools · zero uploads · zero
+                <Sparkles className="size-3.5 text-primary" /> 13 tools · zero uploads · zero
                 accounts
               </span>
               <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
@@ -231,8 +233,8 @@ function SerpKit() {
                 <Button variant="brand" size="lg" onClick={() => setActive("webp")}>
                   Convert images to WebP
                 </Button>
-                <Button variant="outline" size="lg" onClick={() => setActive("faq-schema")}>
-                  Build FAQ schema
+                <Button variant="outline" size="lg" onClick={() => setActive("url-schema")}>
+                  Generate schema from a URL
                 </Button>
               </div>
             </div>

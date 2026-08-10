@@ -1,6 +1,7 @@
 export type ToolCategory = "Image & Assets" | "Schema Builders" | "Text & SEO Meta";
 
 export type ToolId =
+  | "url-schema"
   | "webp"
   | "svg-min"
   | "social-resize"
@@ -30,6 +31,15 @@ export const CATEGORIES: ToolCategory[] = [
 ];
 
 export const TOOLS: ToolMeta[] = [
+  {
+    id: "url-schema",
+    name: "Schema Generator from URL",
+    short: "Schema from URL",
+    description:
+      "Paste any page URL and auto-generate every applicable JSON-LD schema — WebPage, Article, FAQ, Breadcrumbs, HowTo and Organization — from its live HTML.",
+    category: "Schema Builders",
+    icon: "Globe",
+  },
   {
     id: "webp",
     name: "Universal Image to WebP Converter",
