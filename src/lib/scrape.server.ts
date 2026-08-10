@@ -88,8 +88,10 @@ function jsonLdBlocks(html: string): unknown[] {
   return out;
 }
 
-const flatten = (nodes: unknown[]): Record<string, any>[] => {
-  const res: Record<string, any>[] = [];
+type LdNode = any;
+
+const flatten = (nodes: unknown[]): LdNode[] => {
+  const res: LdNode[] = [];
   const walk = (n: unknown) => {
     if (Array.isArray(n)) return n.forEach(walk);
     if (n && typeof n === "object") {
@@ -102,7 +104,7 @@ const flatten = (nodes: unknown[]): Record<string, any>[] => {
   return res;
 };
 
-const typeOf = (n: Record<string, any>): string[] => {
+const typeOf = (n: LdNode): string[] => {
   const t = n["@type"];
   return (Array.isArray(t) ? t : [t]).filter((x): x is string => typeof x === "string");
 };
@@ -123,7 +125,7 @@ const asUrl = (v: unknown): string => {
 
 /* ------------------------------------------------------------- FAQ mining */
 
-function mineFaqs(html: string, nodes: Record<string, any>[]): { q: string; a: string }[] {
+function mineFaqs(html: string, nodes: LdNode[]): { q: string; a: string }[] {
   const fromLd: { q: string; a: string }[] = [];
   for (const n of nodes) {
     if (!typeOf(n).includes("Question")) continue;
@@ -149,7 +151,7 @@ function mineFaqs(html: string, nodes: Record<string, any>[]): { q: string; a: s
 
 /* ----------------------------------------------------------- Step mining */
 
-function mineSteps(html: string, nodes: Record<string, any>[]): { name: string; text: string }[] {
+function mineSteps(html: string, nodes: LdNode[]): { name: string; text: string }[] {
   for (const n of nodes) {
     if (!typeOf(n).includes("HowTo") || !Array.isArray(n.step)) continue;
     const steps = n.step
@@ -179,7 +181,7 @@ function mineSteps(html: string, nodes: Record<string, any>[]): { name: string; 
 
 function mineBreadcrumbs(
   finalUrl: string,
-  nodes: Record<string, any>[],
+  nodes: LdNode[],
 ): { name: string; url: string }[] {
   for (const n of nodes) {
     if (!typeOf(n).includes("BreadcrumbList") || !Array.isArray(n.itemListElement)) continue;
@@ -240,7 +242,7 @@ export async function extractPage(rawUrl: string): Promise<ExtractedPage> {
     typeOf(n).some((t) => /LocalBusiness|Organization|Restaurant|Store|Hotel/i.test(t)),
   );
   const art = nodes.find((n) => typeOf(n).some((t) => /Article|BlogPosting|NewsArticle/i.test(t)));
-  const addr = (org?.address ?? {}) as Record<string, any>;
+  const addr: LdNode = org?.address ?? {};
 
   const telMatch = html.match(/href=["']tel:([^"']+)["']/i);
   const postalGuess = html.match(
