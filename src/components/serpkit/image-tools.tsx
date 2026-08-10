@@ -161,7 +161,7 @@ export function WebpConverter() {
                   min={1}
                   max={100}
                   step={1}
-                  onValueChange={(v) => setQuality(v[0])}
+                  onValueChange={(v) => setQuality(v[0] ?? quality)}
                 />
               </div>
               <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
