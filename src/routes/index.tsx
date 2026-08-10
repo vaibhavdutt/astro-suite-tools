@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactElement } from "react";
 import { icons, ArrowLeft, ChevronDown, Search, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,7 +48,7 @@ export const Route = createFileRoute("/")({
   component: SerpKit,
 });
 
-const VIEWS: Record<ToolId, () => JSX.Element> = {
+const VIEWS: Record<ToolId, () => ReactElement> = {
   webp: WebpConverter,
   "svg-min": SvgMinifier,
   "social-resize": SocialResizer,
