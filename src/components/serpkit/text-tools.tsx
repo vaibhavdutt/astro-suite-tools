@@ -122,7 +122,7 @@ export function PixelWidthChecker() {
                   {(title[0] ?? "S").toUpperCase()}
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-medium">{new URL0(url)}</p>
+                  <p className="truncate text-xs font-medium">{URL0(url)}</p>
                   <p className="truncate text-[0.7rem] text-muted-foreground">{url}</p>
                 </div>
               </div>
