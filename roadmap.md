@@ -1,7 +1,8 @@
 # Roadmap
 
-- [x] Fetch LinkedIn profile details (headline, roles, certifications) via search
-- [x] Scope: user confirmed SERPKit is separate — replace this project with the portfolio site
-- [ ] Build Vaibhav Dutt portfolio: hero, about, experience, skills, certifications, education, contact
-- [ ] Remove SERPKit routes/components; update SEO head metadata
-- [ ] Verify build + preview
+- [x] Fetch LinkedIn profile details via search
+- [x] Replace SERPKit with portfolio (user confirmed separate site; SERPKit lives on Vercel)
+- [x] Build portfolio: hero, stats, about, experience timeline, skills, certifications, projects, education, contact + JSON-LD Person schema
+- [x] Verify build (OK) and visual check via screenshots
+
+All done. Future: connect a custom domain (e.g. vaibhavdutt.com) after publishing.
