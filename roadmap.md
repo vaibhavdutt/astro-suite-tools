@@ -1,5 +1,7 @@
 # Roadmap
 
-- [ ] Fetch LinkedIn profile https://www.linkedin.com/in/vaibhav-dutt-seo/ for extra details
-- [ ] Get design preferences (palette, typography, layout) from user
-- [ ] Build Vaibhav Dutt portfolio site (replace SERPKit or new routes) with SEO metadata
+- [x] Fetch LinkedIn profile details (headline, roles, certifications) via search
+- [x] Scope: user confirmed SERPKit is separate — replace this project with the portfolio site
+- [ ] Build Vaibhav Dutt portfolio: hero, about, experience, skills, certifications, education, contact
+- [ ] Remove SERPKit routes/components; update SEO head metadata
+- [ ] Verify build + preview
