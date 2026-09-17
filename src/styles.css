@@ -4,6 +4,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
 @theme inline {
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
@@ -38,7 +52,6 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-glow: var(--glow);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -56,47 +69,83 @@
 
 :root {
   --radius: 0.875rem;
-  /* Midnight Indigo — dark-first personal brand */
-  --background: oklch(0.145 0.028 272);
-  --foreground: oklch(0.96 0.008 268);
-  --card: oklch(0.19 0.034 272);
-  --card-foreground: oklch(0.96 0.008 268);
-  --popover: oklch(0.19 0.034 272);
-  --popover-foreground: oklch(0.96 0.008 268);
-  --primary: oklch(0.62 0.21 277);
-  --primary-foreground: oklch(0.985 0.004 270);
-  --secondary: oklch(0.24 0.04 272);
-  --secondary-foreground: oklch(0.92 0.01 268);
-  --muted: oklch(0.23 0.036 272);
-  --muted-foreground: oklch(0.68 0.03 268);
-  --accent: oklch(0.28 0.06 277);
-  --accent-foreground: oklch(0.96 0.01 275);
-  --destructive: oklch(0.63 0.19 25);
-  --destructive-foreground: oklch(0.985 0.004 270);
-  --border: oklch(0.3 0.045 272);
-  --input: oklch(0.32 0.05 272);
-  --ring: oklch(0.62 0.21 277);
-  --glow: oklch(0.72 0.19 277);
-  --code: oklch(0.18 0.032 272);
-  --code-foreground: oklch(0.85 0.1 160);
-  --chart-1: oklch(0.62 0.21 277);
-  --chart-2: oklch(0.7 0.16 190);
-  --chart-3: oklch(0.77 0.16 70);
-  --chart-4: oklch(0.65 0.24 320);
-  --chart-5: oklch(0.68 0.2 25);
-  --sidebar: oklch(0.19 0.034 272);
-  --sidebar-foreground: oklch(0.96 0.008 268);
-  --sidebar-primary: oklch(0.62 0.21 277);
-  --sidebar-primary-foreground: oklch(0.985 0.004 270);
-  --sidebar-accent: oklch(0.28 0.06 277);
-  --sidebar-accent-foreground: oklch(0.96 0.01 275);
-  --sidebar-border: oklch(0.3 0.045 272);
-  --sidebar-ring: oklch(0.62 0.21 277);
-  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.3), 0 12px 32px -16px oklch(0 0 0 / 0.5);
-  --shadow-brand: 0 8px 28px -8px oklch(0.62 0.21 277 / 0.55);
-  --gradient-hero:
-    radial-gradient(90% 70% at 50% -10%, oklch(0.35 0.12 277 / 0.5) 0%, transparent 60%),
-    radial-gradient(50% 40% at 85% 10%, oklch(0.45 0.15 240 / 0.35) 0%, transparent 65%);
+  --background: oklch(0.985 0.006 180);
+  --foreground: oklch(0.21 0.032 232);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.032 232);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.032 232);
+  --primary: oklch(0.58 0.128 191);
+  --primary-foreground: oklch(0.99 0.005 190);
+  --secondary: oklch(0.958 0.012 200);
+  --secondary-foreground: oklch(0.29 0.035 232);
+  --muted: oklch(0.962 0.009 200);
+  --muted-foreground: oklch(0.53 0.026 226);
+  --accent: oklch(0.93 0.045 190);
+  --accent-foreground: oklch(0.27 0.05 210);
+  --destructive: oklch(0.577 0.209 25);
+  --destructive-foreground: oklch(0.99 0.003 247);
+  --border: oklch(0.912 0.014 210);
+  --input: oklch(0.912 0.014 210);
+  --ring: oklch(0.58 0.128 191);
+  --code: oklch(0.21 0.036 235);
+  --code-foreground: oklch(0.9 0.05 175);
+  --chart-1: oklch(0.58 0.128 191);
+  --chart-2: oklch(0.68 0.13 160);
+  --chart-3: oklch(0.62 0.14 250);
+  --chart-4: oklch(0.78 0.15 85);
+  --chart-5: oklch(0.65 0.17 30);
+  --sidebar: oklch(0.994 0.004 190);
+  --sidebar-foreground: oklch(0.21 0.032 232);
+  --sidebar-primary: oklch(0.58 0.128 191);
+  --sidebar-primary-foreground: oklch(0.99 0.005 190);
+  --sidebar-accent: oklch(0.94 0.035 190);
+  --sidebar-accent-foreground: oklch(0.27 0.05 210);
+  --sidebar-border: oklch(0.912 0.014 210);
+  --sidebar-ring: oklch(0.58 0.128 191);
+  --shadow-soft: 0 1px 2px oklch(0.21 0.032 232 / 0.04), 0 8px 24px -12px oklch(0.21 0.032 232 / 0.12);
+  --shadow-brand: 0 6px 18px -6px oklch(0.58 0.128 191 / 0.5);
+  --gradient-hero: radial-gradient(
+    120% 120% at 20% 0%,
+    oklch(0.93 0.05 190 / 0.85) 0%,
+    oklch(0.985 0.006 180 / 0) 60%
+  );
+}
+
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
 @layer base {
@@ -116,6 +165,3 @@
   background-image: var(--gradient-hero);
 }
 
-@utility text-glow {
-  text-shadow: 0 0 32px oklch(0.62 0.21 277 / 0.45);
-}

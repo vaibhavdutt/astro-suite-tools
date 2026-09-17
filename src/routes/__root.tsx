@@ -77,11 +77,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "Vaibhav Dutt" },
-      { title: "Vaibhav Dutt — SEO Specialist" },
-      { property: "og:site_name", content: "Vaibhav Dutt" },
+      { name: "author", content: "SERPKit" },
+      { name: "google-site-verification", content: "Mz9tTyfFPTfLR0uELFjdBUUzZWFX1Htwnari55TGTaM" },
+      { title: "SERPKit – The Browser-Only SEO Utility Suite" },
+      { name: "title", content: "SERPKit – The Browser-Only SEO Utility Suite" },
+      { name: "description", content: "Convert images to WebP, minify SVG, build JSON-LD schema, check meta pixel widths and generate robots.txt — all processed in your browser." },
+      
+      /* Open Graph / Facebook / LinkedIn */
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://serpkit-seo.vercel.app/" },
+      { property: "og:title", content: "SERPKit – The Browser-Only SEO Utility Suite" },
+      { property: "og:description", content: "Convert images to WebP, minify SVG, build JSON-LD schema, check meta pixel widths and generate robots.txt — all processed in your browser." },
+      { property: "og:image", content: "https://serpkit-seo.vercel.app/og-image.png" },
+
+      /* Twitter */
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "twitter:url", content: "https://serpkit-seo.vercel.app/" },
+      { property: "twitter:title", content: "SERPKit – The Browser-Only SEO Utility Suite" },
+      { property: "twitter:description", content: "Convert images to WebP, minify SVG, build JSON-LD schema, check meta pixel widths and generate robots.txt — all processed in your browser." },
+      { property: "twitter:image", content: "https://serpkit-seo.vercel.app/og-image.png" },
     ],
     links: [
       {
